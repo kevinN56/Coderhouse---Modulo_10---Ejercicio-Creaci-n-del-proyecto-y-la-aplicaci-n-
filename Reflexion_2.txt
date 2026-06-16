@@ -6,3 +6,22 @@ el panel de administración hace más sencilla la búsqueda y gestión de regist
 Las migraciones son importantes porque mantienen la base de datos sincronizada 
 con los cambios realizados en los modelos. De esta forma, cualquier modificación 
 en el código se refleja correctamente en la estructura de la base de datos.
+
+En Django, el rollback de migraciones permite volver a un estado anterior de la base 
+de datos en caso de errores o cambios no deseados. Para hacerlo, primero se pueden ver 
+las migraciones aplicadas con el comando python manage.py showmigrations. Luego, es posible 
+retroceder a una migración específica usando python manage.py migrate app nombre_migración, 
+o volver completamente al estado inicial de una aplicación con python manage.py migrate app zero. 
+Es importante tener cuidado al realizar rollback, ya que puede eliminar tablas o columnas y provocar 
+pérdida de datos.
+
+En cuanto a la gestión de conflictos, estos suelen aparecer cuando hay cambios simultáneos en los 
+modelos, por ejemplo al trabajar con diferentes ramas en Git. Cuando Django detecta migraciones 
+conflictivas, muestra un error indicando el problema. Para solucionarlo, se puede intentar ejecutar 
+python manage.py migrate, y si el conflicto persiste, usar python manage.py makemigrations --merge, 
+lo cual crea una migración de combinación que unifica los cambios. Luego se revisa el archivo generado 
+y se aplican las migraciones normalmente con python manage.py migrate.
+
+Como buenas prácticas, se recomienda no modificar migraciones ya aplicadas en producción, trabajar en 
+ramas separadas cuando se hacen cambios en modelos y revisar siempre las migraciones antes de aplicarlas 
+para evitar errores en la base de datos.
