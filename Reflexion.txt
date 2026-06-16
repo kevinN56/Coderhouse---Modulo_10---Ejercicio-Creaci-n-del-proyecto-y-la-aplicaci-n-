@@ -1,0 +1,9 @@
+¿Cómo las relaciones entre modelos facilitan consultas complejas?
+- Las relaciones entre modelos como ForeignKey y ManyToManyField permiten conectar tablas de la base de datos de forma lógica y eficiente.
+
+¿Qué ventajas ofrece implementar validaciones en el modelo frente a hacerlo en la vista?
+- Centralización de la lógica de negocio: las reglas de validación se definen en un solo lugar, lo que facilita su mantenimiento.
+- Reutilización: la validación se aplica sin importar desde dónde se creen o modifiquen los datos (vistas, formularios, API, panel de administración, scripts, etc.).
+- Consistencia de los datos: garantiza que todos los datos almacenados cumplan las mismas reglas, evitando registros inválidos.
+- Menos código duplicado: no es necesario repetir las mismas validaciones en cada vista que manipule el modelo.
+- Mayor mantenibilidad: si una regla cambia, solo se modifica en el modelo y no en todas las vistas donde se use.
