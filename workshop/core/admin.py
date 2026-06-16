@@ -3,6 +3,7 @@ from .models import Autor,Post,Tag
 # Register your models here.
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title','author','published_date')
+    search_fields = ('title','author')
     list_filter = ('tags',)
 admin.site.register(Post,PostAdmin)    
 admin.site.register(Autor)
