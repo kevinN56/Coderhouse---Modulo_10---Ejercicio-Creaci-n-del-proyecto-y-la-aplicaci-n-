@@ -19,6 +19,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200,verbose_name='Título')
     content = models.TextField(verbose_name='Contenido')
     published_date = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de Publicación')
+    publicado = models.BooleanField(default=True)
     author = models.ForeignKey(Autor, on_delete=models.CASCADE,verbose_name="Autor",related_name='posts')
     tags = models.ManyToManyField('Tag',related_name='posts')
     def __str__(self):
