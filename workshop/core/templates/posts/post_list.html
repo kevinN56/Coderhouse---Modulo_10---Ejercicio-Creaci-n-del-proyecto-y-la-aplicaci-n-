@@ -1,18 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Posts{% endblock %}
+
+{% block content %}
 {% for post in object_list %}
 <h2>{{ post.title }}</h2>
 
 <p>Autor: {{ post.author.name }}</p>
 
-<p>Tags:</p>
-
-<ul>
-    {% for tag in post.tags.all %}
-    <li>{{ tag.name }}</li>
-    {% endfor %}
-</ul>
 <a href="{% url 'post_detail' post.pk %}">Detalle</a>
-<a href="{% url 'post_delete' post.pk %}">Eliminar</a>
 <a href="{% url 'post_update' post.pk %}">Editar</a>
+<a href="{% url 'post_delete' post.pk %}">Eliminar</a>
 
-
+<hr>
 {% endfor %}
+{% endblock %}

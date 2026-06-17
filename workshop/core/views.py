@@ -7,8 +7,6 @@ from .models import Post
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-def home(request):
-    return render(request, 'core/index.html')
 
 class PostListView(LoginRequiredMixin,  ListView):
     model = Post
@@ -45,3 +43,6 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     
 class UsuarioLoginView(LoginView):
     template_name = 'usuarios/login.html'
+    
+def home(request,):
+    return render(request, 'core/index.html')    
