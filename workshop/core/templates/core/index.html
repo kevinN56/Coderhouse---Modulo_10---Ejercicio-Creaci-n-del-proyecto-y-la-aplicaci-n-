@@ -1,19 +1,11 @@
-<!-- core/templates/core/index.html -->
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Workshop Django</title>
+{% block title %}
+Inicio
+{% endblock %}
 
-    {% load static %}
+{% block content %}
+<h1>Bienvenido al Blog</h1>
 
-    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
-</head>
-<body>
-
-    <h1>¡Mi primer proyecto Django!</h1>
-    <p>La aplicación core está funcionando correctamente.</p>
-
-</body>
-</html>
+<p>Página principal del proyecto.</p>
+{% endblock %}

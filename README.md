@@ -116,3 +116,84 @@ Se verificó correctamente el funcionamiento de las operaciones CRUD:
 - Edición de publicaciones existentes.
 - Eliminación de publicaciones.
 - Navegación entre las distintas vistas mediante enlaces y URLs configuradas.
+
+# Comparación entre FBVs y CBVs en Django
+
+## Introducción
+
+Django ofrece dos formas principales de crear vistas: las vistas basadas en funciones (Function-Based Views o FBVs) y las vistas basadas en clases (Class-Based Views o CBVs). Ambas permiten responder a las solicitudes de los usuarios, pero difieren en la forma en que organizan el código y reutilizan funcionalidades.
+
+## Function-Based Views (FBVs)
+
+Las FBVs son funciones de Python que reciben un objeto `request` y devuelven una respuesta. Son fáciles de entender y adecuadas para lógica simple.
+
+Ejemplo utilizado en este proyecto:
+
+```python
+def home(request):
+    return render(request, 'core/index.html')
+```
+
+Esta vista renderiza la página principal y resulta sencilla de implementar porque solo necesita mostrar una plantilla.
+
+### Ventajas de las FBVs
+
+- Más simples para principiantes.
+- Mayor control sobre el flujo de ejecución.
+- Adecuadas para lógica personalizada y específica.
+
+### Desventajas de las FBVs
+
+- Requieren escribir más código para operaciones repetitivas.
+- Menor reutilización de funcionalidades.
+- Pueden volverse difíciles de mantener en proyectos grandes.
+
+## Class-Based Views (CBVs)
+
+Las CBVs utilizan clases y herencia para proporcionar funcionalidades predefinidas. Django incluye clases genéricas para operaciones comunes como listar, crear, actualizar y eliminar registros.
+
+En este proyecto se utilizaron CBVs para implementar el CRUD del modelo `Post`:
+
+```python
+class PostListView(LoginRequiredMixin, ListView):
+    model = Post
+```
+
+```python
+class PostDetailView(LoginRequiredMixin, DetailView):
+    model = Post
+```
+
+```python
+class PostCreateView(LoginRequiredMixin, CreateView):
+    model = Post
+```
+
+```python
+class PostUpdateView(LoginRequiredMixin, UpdateView):
+    model = Post
+```
+
+```python
+class PostDeleteView(LoginRequiredMixin, DeleteView):
+    model = Post
+```
+
+Estas clases permiten implementar funcionalidades complejas con pocas líneas de código.
+
+### Ventajas de las CBVs
+
+- Mayor reutilización de código.
+- Menor cantidad de código repetido.
+- Facilitan la implementación de operaciones CRUD.
+- Integración sencilla con mixins como `LoginRequiredMixin`.
+
+### Desventajas de las CBVs
+
+- Curva de aprendizaje más alta.
+- Puede resultar menos intuitivo entender la herencia y los métodos internos.
+- La personalización avanzada requiere conocer la estructura de las clases.
+
+## Conclusión
+
+En este proyecto se utilizó una FBV para la página principal debido a su simplicidad, mientras que las operaciones CRUD del modelo `Post` fueron implementadas mediante CBVs. Esta decisión permitió aprovechar las ventajas de las vistas genéricas de Django, reduciendo la cantidad de código necesario y mejorando la organización y mantenibilidad del proyecto.

@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from .models import Post
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import PostForm
 
 
 class PostListView(LoginRequiredMixin,  ListView):
@@ -26,13 +27,13 @@ class PostDetailView(LoginRequiredMixin, DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'content','author','tags']
+    form_class = PostForm
     template_name = 'posts/post_form.html'
     success_url = reverse_lazy('post_list')  
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
-    fields = ['title', 'content', 'author', 'tags']
+    form_class = PostForm
     template_name = 'posts/post_form.html'
     success_url = reverse_lazy('post_list')
     
