@@ -1,13 +1,440 @@
+/* ============================================================
+   BLOG — Tema editorial rojo/negro con acentos naranja fluor
+   Inspirado en fanzines y carteles de imprenta tipográfica
+   ============================================================ */
+
+:root {
+    --color-black: #0d0a09;
+    --color-charcoal: #1a1412;
+    --color-red: #c8102e;
+    --color-red-dark: #8a0a1f;
+    --color-orange: #ff6b00;
+    --color-cream: #f2ebe1;
+    --color-cream-dim: #cfc4b3;
+
+    --font-display: "Archivo Black", "Arial Black", sans-serif;
+    --font-body: "Georgia", "Times New Roman", serif;
+    --font-mono: "Courier New", monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 30px;
+    background-color: var(--color-black);
+    background-image:
+        repeating-linear-gradient(135deg,
+            rgba(200, 16, 46, 0.04) 0px,
+            rgba(200, 16, 46, 0.04) 2px,
+            transparent 2px,
+            transparent 14px);
+    color: var(--color-cream);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    min-height: 100vh;
+}
+
+/* ── Foco visible para accesibilidad ─────────────────────────── */
+:focus-visible {
+    outline: 3px solid var(--color-orange);
+    outline-offset: 2px;
+}
+
+/* ── Navegación ───────────────────────────────────────────────
+   Barra editorial con borde inferior grueso tipo "masthead"     */
+nav {
+    background-color: var(--color-black);
+    border-bottom: 4px solid var(--color-red);
+    padding: 1.4rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+nav::before {
+    content: "ZINE №";
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--color-red);
+    margin-right: 1.5rem;
+    text-transform: uppercase;
 }
 
 nav a {
-    margin-right: 10px;
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     text-decoration: none;
+    color: var(--color-cream);
+    background-color: var(--color-charcoal);
+    border: 2px solid var(--color-red);
+    padding: 0.6rem 1.4rem;
+    margin-right: 0.8rem;
+    border-radius: 2px;
+    transition: background-color 0.18s ease, color 0.18s ease,
+        box-shadow 0.18s ease, transform 0.12s ease;
 }
 
-button {
-    padding: 5px 10px;
+nav a:last-child {
+    margin-right: 0;
+}
+
+/* ── Botones / Links de acción: naranja fluor ────────────────── */
+nav a,
+.btn,
+a.btn {
+    position: relative;
+}
+
+nav a:hover,
+.btn:hover,
+a.btn:hover {
+    background-color: var(--color-orange);
+    border-color: var(--color-orange);
+    color: var(--color-black);
+    box-shadow: 0 0 14px rgba(255, 107, 0, 0.55);
+    transform: translateY(-1px);
+}
+
+nav a:active,
+.btn:active,
+a.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 0 6px rgba(255, 107, 0, 0.4);
+}
+
+/* Botón sólido reutilizable para cualquier link de acción */
+.btn,
+a.btn {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-black);
+    background-color: var(--color-orange);
+    border: 2px solid var(--color-orange);
+    padding: 0.65rem 1.6rem;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(255, 107, 0, 0.35);
+}
+
+.btn:hover,
+a.btn:hover {
+    background-color: var(--color-cream);
+    border-color: var(--color-cream);
+    color: var(--color-black);
+    box-shadow: 0 0 16px rgba(255, 107, 0, 0.6);
+}
+
+/* Variante de borde (secundaria) */
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-orange);
+    border: 2px solid var(--color-orange);
+    box-shadow: none;
+}
+
+.btn-outline:hover {
+    background-color: var(--color-orange);
+    color: var(--color-black);
+}
+
+/* Botón rojo (acciones principales tipo "Entrar") */
+.btn-red {
+    background-color: var(--color-red);
+    border-color: var(--color-red);
+    color: var(--color-cream);
+    box-shadow: 0 0 10px rgba(200, 16, 46, 0.45);
+}
+
+.btn-red:hover {
+    background-color: var(--color-orange);
+    border-color: var(--color-orange);
+    color: var(--color-black);
+    box-shadow: 0 0 16px rgba(255, 107, 0, 0.6);
+}
+
+/* ── Separador tipo regla de imprenta ────────────────────────── */
+hr {
+    border: none;
+    height: 6px;
+    margin: 0;
+    background: repeating-linear-gradient(90deg,
+            var(--color-red) 0px,
+            var(--color-red) 18px,
+            var(--color-black) 18px,
+            var(--color-black) 24px);
+}
+
+/* ── Contenido principal ─────────────────────────────────────── */
+main,
+.content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--color-cream);
+    line-height: 1.15;
+}
+
+h1 {
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    color: var(--color-red);
+    -webkit-text-stroke: 1px var(--color-black);
+    margin-bottom: 1.2rem;
+    position: relative;
+    display: inline-block;
+}
+
+h1::after {
+    content: "";
+    display: block;
+    width: 70%;
+    height: 8px;
+    margin-top: 0.4rem;
+    background-color: var(--color-orange);
+}
+
+h2 {
+    font-size: 1.6rem;
+    color: var(--color-cream);
+    border-left: 5px solid var(--color-red);
+    padding-left: 0.7rem;
+    margin: 2.2rem 0 1rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+    color: var(--color-red);
+    margin: 1.6rem 0 0.6rem;
+}
+
+p {
+    color: var(--color-cream-dim);
+    margin-bottom: 1.2rem;
+    max-width: 70ch;
+}
+
+a {
+    color: var(--color-orange);
+    text-decoration-color: rgba(255, 107, 0, 0.5);
+}
+
+a:hover {
+    color: var(--color-cream);
+    text-decoration-color: var(--color-orange);
+}
+
+strong {
+    color: var(--color-cream);
+}
+
+blockquote {
+    border-left: 4px solid var(--color-orange);
+    background-color: var(--color-charcoal);
+    padding: 1rem 1.4rem;
+    margin: 1.6rem 0;
+    font-style: italic;
+    color: var(--color-cream-dim);
+}
+
+code,
+pre {
+    font-family: var(--font-mono);
+    background-color: var(--color-charcoal);
+    color: var(--color-orange);
+    border-radius: 2px;
+}
+
+code {
+    padding: 0.15rem 0.4rem;
+    font-size: 0.9em;
+}
+
+pre {
+    padding: 1rem 1.2rem;
+    overflow-x: auto;
+    border-left: 3px solid var(--color-red);
+    margin-bottom: 1.4rem;
+}
+
+/* ── Tarjetas de post (lista de posts) ───────────────────────── */
+.post-card {
+    background-color: var(--color-charcoal);
+    border: 1px solid rgba(200, 16, 46, 0.4);
+    border-left: 5px solid var(--color-red);
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.4rem;
+    border-radius: 2px;
+    transition: border-color 0.18s ease, transform 0.12s ease;
+}
+
+.post-card:hover {
+    border-left-color: var(--color-orange);
+    transform: translateX(3px);
+}
+
+.post-card h2 {
+    margin-top: 0;
+    border-left: none;
+    padding-left: 0;
+}
+
+.post-meta {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-red);
+    margin-bottom: 0.6rem;
+}
+
+/* ── Formularios (login, registro, etc.) ─────────────────────── */
+.auth-form {
+    max-width: 420px;
+    background-color: var(--color-charcoal);
+    border: 1px solid rgba(200, 16, 46, 0.4);
+    border-left: 5px solid var(--color-red);
+    padding: 2rem 2.2rem;
+    border-radius: 2px;
+}
+
+.form-group {
+    margin-bottom: 1.3rem;
+}
+
+.form-group label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-cream-dim);
+    margin-bottom: 0.4rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    background-color: #000000;
+    border: 2px solid var(--color-red-dark);
+    color: var(--color-cream);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 0.6rem 0.8rem;
+    border-radius: 2px;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(207, 196, 179, 0.45);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-orange);
+    box-shadow: 0 0 10px rgba(255, 107, 0, 0.4);
+}
+
+/* Campo completado y válido = borde y glow verde */
+.form-group input:valid:not(:placeholder-shown),
+.form-group textarea:valid:not(:placeholder-shown) {
+    border-color: #2ecc71;
+    box-shadow: 0 0 8px rgba(46, 204, 113, 0.45);
+}
+
+/* Campo completado pero inválido = se mantiene en rojo de alerta */
+.form-group input:invalid:not(:placeholder-shown):not(:focus),
+.form-group textarea:invalid:not(:placeholder-shown):not(:focus) {
+    border-color: var(--color-red);
+    box-shadow: 0 0 8px rgba(200, 16, 46, 0.4);
+}
+
+.field-error {
+    display: block;
+    margin-top: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--color-red);
+}
+
+.auth-form .btn {
+    width: 100%;
+    margin-top: 0.6rem;
+    text-align: center;
+}
+
+/* ── Footer ───────────────────────────────────────────────────── */
+footer {
+    border-top: 4px solid var(--color-red);
+    background-color: var(--color-black);
+    padding: 1.6rem 2rem;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-cream-dim);
+}
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav::before {
+        margin-bottom: 0.4rem;
+    }
+
+    nav a {
+        margin-right: 0.5rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    main,
+    .content {
+        padding: 2rem 1.2rem 3rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+/* ── Reduced motion ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
 }
