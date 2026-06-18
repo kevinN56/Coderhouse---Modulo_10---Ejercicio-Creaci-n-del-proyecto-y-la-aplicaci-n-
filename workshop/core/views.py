@@ -61,12 +61,6 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'posts/post_delete.html'
     success_url = reverse_lazy('post_list')
 
-
-# Vista encargada de la autenticación de usuarios
-class UsuarioLoginView(LoginView):
-    template_name = 'usuarios/login.html'
-
-
 # Página principal del proyecto
 # Requiere que el usuario haya iniciado sesión
 @login_required
