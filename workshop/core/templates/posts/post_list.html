@@ -25,17 +25,17 @@ Lista de Posts
     </p>
 
     <!-- Enlace para ir a la plantilla post_detail -->
-    <a href="{% url 'post_detail' post.pk %}">
+    <a href="{% url 'core:post_detail' post.pk %}">
         Ver detalle
     </a>
 
     <!-- Enlace para ir a la plantilla post_update -->
-    <a href="{% url 'post_update' post.pk %}">
+    <a href="{% url 'core:post_update' post.pk %}">
         Editar
     </a>
 
     <!-- Enlace para ir a la plantilla post_delete -->
-    <a href="{% url 'post_delete' post.pk %}">
+    <a href="{% url 'core:post_delete' post.pk %}">
         Eliminar
     </a>
 </div>

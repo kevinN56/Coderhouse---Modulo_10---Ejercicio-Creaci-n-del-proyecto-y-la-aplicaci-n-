@@ -44,7 +44,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
     template_name = 'posts/post_form.html'
-    success_url = reverse_lazy('post_list')
+    success_url = reverse_lazy('core:post_list')
 
 
 # Permite modificar una publicación existente
@@ -52,14 +52,14 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
     form_class = PostForm
     template_name = 'posts/post_form.html'
-    success_url = reverse_lazy('post_list')
+    success_url = reverse_lazy('core:post_list')
 
 
 # Permite eliminar una publicación previa confirmación
 class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     template_name = 'posts/post_delete.html'
-    success_url = reverse_lazy('post_list')
+    success_url = reverse_lazy('core:post_list')
 
 # Página principal del proyecto
 # Requiere que el usuario haya iniciado sesión
