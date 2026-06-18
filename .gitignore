@@ -5,3 +5,8 @@ db.sqlite3
 env
 Reflexion.txt
 Reflexion_2.txt
+__pyca__pycache__/
+*.pyc
+media/
+staticfiles/
+.env
