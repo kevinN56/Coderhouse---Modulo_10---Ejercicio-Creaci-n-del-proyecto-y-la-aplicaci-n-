@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Virtual</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a1a1a, #3b0000);
+            color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 50px;
+            border-radius: 15px;
+            max-width: 700px;
+            box-shadow: 0 0 25px rgba(128, 0, 0, 0.6);
+            border: 2px solid #800020;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #b22222;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #dcdcdc;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background-color: #800020;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            border: 2px solid #b22222;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #b22222;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(178, 34, 34, 0.8);
+        }
+
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="icon">📚</div>
+
+        <h1>Biblioteca Virtual</h1>
+
+        <p>
+            Sumérgete en un mundo de conocimiento, historias y aprendizaje.
+            Explora nuestro catálogo y encuentra tu próxima lectura favorita.
+        </p>
+
+        <a href="{% url 'core:login' %}" class="btn">
+            Inicia Sesion Ahora!
+        </a>
+    </div>
+
+</body>
+
+</html>

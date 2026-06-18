@@ -7,7 +7,8 @@ from django.urls import reverse_lazy
 
 app_name = 'core'
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('home/', views.home, name='home'),
+    path('', views.Presentacion, name='presentacion'),
     path('post/list/', views.PostListView.as_view(), name='post_list'),
     path('post/<int:pk>/', views.PostDetailView.as_view(), name='post_detail'),
     path('post/new/', views.PostCreateView.as_view(), name='post_create'),

@@ -66,3 +66,6 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
 @login_required
 def home(request):
     return render(request, 'core/index.html')
+
+def Presentacion(request):
+    return render(request,'core/Presentacion.html')
