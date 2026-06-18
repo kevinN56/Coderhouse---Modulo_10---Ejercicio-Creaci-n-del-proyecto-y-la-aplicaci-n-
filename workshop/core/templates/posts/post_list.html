@@ -1,17 +1,48 @@
 {% extends 'base.html' %}
 
-{% block title %}Lista de Posts{% endblock %}
+{% block title %}
+Lista de Posts
+{% endblock %}
 
 {% block content %}
+<h1>Posts publicados</h1>
+
+<!-- Listado de publicaciones -->
+
 {% for post in object_list %}
-<h2>{{ post.title }}</h2>
+<div>
+    <!-- Título del post -->
+    <h2>{{ post.title|upper }}</h2>
 
-<p>Autor: {{ post.author.name }}</p>
+    <!-- Autor -->
+    <p>
+        Autor: {{ post.author.name }}
+    </p>
 
-<a href="{% url 'post_detail' post.pk %}">Detalle</a>
-<a href="{% url 'post_update' post.pk %}">Editar</a>
-<a href="{% url 'post_delete' post.pk %}">Eliminar</a>
+    <!-- Contenido -->
+    <p>
+        {{ post.content|truncatewords:20 }}
+    </p>
+
+    <!-- Enlace para ir a la plantilla post_detail -->
+    <a href="{% url 'post_detail' post.pk %}">
+        Ver detalle
+    </a>
+
+    <!-- Enlace para ir a la plantilla post_update -->
+    <a href="{% url 'post_update' post.pk %}">
+        Editar
+    </a>
+
+    <!-- Enlace para ir a la plantilla post_delete -->
+    <a href="{% url 'post_delete' post.pk %}">
+        Eliminar
+    </a>
+</div>
 
 <hr>
+{% empty %}
+<p>No hay publicaciones disponibles.</p>
 {% endfor %}
+
 {% endblock %}

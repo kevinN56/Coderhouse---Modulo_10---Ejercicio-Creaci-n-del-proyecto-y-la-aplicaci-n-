@@ -4,13 +4,17 @@
 
 <head>
     <meta charset="UTF-8">
+
+    <!-- Título dinámico que puede ser sobrescrito por las plantillas hijas -->
     <title>{% block title %}Blog{% endblock %}</title>
 
+    <!-- Carga de la hoja de estilos principal -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
 <body>
 
+    <!-- Menú de navegación común para todo el sitio -->
     <nav>
         <a href="{% url 'home' %}">Inicio</a>
         <a href="{% url 'post_list' %}">Posts</a>
@@ -18,6 +22,7 @@
 
     <hr>
 
+    <!-- Bloque principal donde cada plantilla hija inserta su contenido -->
     {% block content %}
     {% endblock %}
 
