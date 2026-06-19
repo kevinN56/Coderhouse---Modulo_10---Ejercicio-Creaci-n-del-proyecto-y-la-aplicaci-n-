@@ -4,27 +4,32 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Biblioteca Virtual{% endblock %}</title>
 
-    <!-- Título dinámico que puede ser sobrescrito por las plantillas hijas -->
-    <title>{% block title %}Blog{% endblock %}</title>
-
-    <!-- Carga de la hoja de estilos principal -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
 
-    <!-- Menú de navegación común para todo el sitio -->
-    <nav>
-        <a href="{% url 'core:home' %}">Inicio</a>
-        <a href="{% url 'core:post_list' %}">Posts</a>
-    </nav>
+    <div class="container">
 
-    <hr>
+        <div class="icon">
+            {% block icon %}
+            📚
+            {% endblock %}
+        </div>
 
-    <!-- Bloque principal donde cada plantilla hija inserta su contenido -->
-    {% block content %}
-    {% endblock %}
+        <h1>
+            {% block heading %}
+            Biblioteca Virtual
+            {% endblock %}
+        </h1>
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
 
 </body>
 

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>
+    Sumérgete en un mundo de conocimiento, historias y aprendizaje.
+    Explora nuestro catálogo y encuentra tu próxima lectura favorita.
+</p>
+
+<a href="{% url 'core:login' %}" class="btn">
+    Inicia Sesión Ahora
+</a>
+{% endblock %}

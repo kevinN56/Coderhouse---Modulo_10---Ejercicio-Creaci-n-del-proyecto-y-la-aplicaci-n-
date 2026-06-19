@@ -1,11 +1,27 @@
 {% extends 'base.html' %}
 
-{% block title %}Detalle{% endblock %}
+{% block title %}
+{{ object.title }}
+{% endblock %}
+
+{% block heading %}
+📖 Detalle del Post
+{% endblock %}
 
 {% block content %}
-<h1>{{ object.title }}</h1>
 
-<p>{{ object.content }}</p>
+<div class="post-detail">
 
-<a href="{% url 'core:post_list' %}">Volver</a>
+    <h2>{{ object.title }}</h2>
+
+    <p class="post-content">
+        {{ object.content }}
+    </p>
+
+    <a href="{% url 'core:post_list' %}" class="btn">
+        ← Volver a Posts
+    </a>
+
+</div>
+
 {% endblock %}
